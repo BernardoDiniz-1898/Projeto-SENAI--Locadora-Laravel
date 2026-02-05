@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Model_Carros;
+use App\Models\Carros;
 use Illuminate\Http\Request;
 
 class Controller_Carros extends Controller
@@ -29,7 +29,7 @@ class Controller_Carros extends Controller
             'Ano' => 'required|integer',
         ]);
 
-        Model_Carros::create([
+        Carros::create([
 
             'Modeo' => $validate['Modelo'],
             'Marca' => $validate['Marca'],
@@ -47,12 +47,12 @@ class Controller_Carros extends Controller
  
     
   
-    public function update(Request $request, Model_Carros $model_Carros)
+    public function update(Request $request, Carros $carros)
     {
         $validate = $request->validate([
             'Modelo' => 'required|max:100',
             'Marca' => 'required|max:15',
-            'Placa' => 'required|max:30|unique:carros,Placa,' . $model_Carros->id,
+            'Placa' => 'required|max:30|unique:carros,Placa,' . $carros->id,
             'Valor_Diaria' => 'required|numeric',
             'Descricao' => 'nullable|string',
             'Cor' => 'required|max:100',
@@ -72,9 +72,9 @@ class Controller_Carros extends Controller
         return redirect()->route('carros.index')->with('success', 'Carro atualizado com sucesso!');
     }
 
-    public function destroy(Model_Carros $model_Carros)
+    public function destroy(Carros $carros)
     {
-        $carro->delete();
+        $carros->delete();
         return redirect()->route('carros.index')->with('success', 'Carro deletado com sucesso!');
     }
 }

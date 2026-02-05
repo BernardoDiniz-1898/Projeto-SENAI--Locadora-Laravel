@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Model_Carros extends Model
+class Carros extends Model
 {
     use HasFactory;
 
 
-    protected $fillabeil = 
+    protected $fillable = 
     [
         
     'Modelo', 
