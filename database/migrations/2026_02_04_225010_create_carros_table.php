@@ -15,8 +15,12 @@ return new class extends Migration
 
             $table->id();
             $table->string('Modelo');
+            $table -> string('Marca');
+            $table->string('Placa')->unique();
+            $table->decimal('Valor_Diaria', 8, 2);
+            $table->text('Descricao')->nullable();
             $table->string('Cor');
-            $table->year('Ano Veiculo')->check('ano veiculo >=1900');
+            $table->year('Ano')->check('Ano >=1900');
 
             $table->timestamps();
         });

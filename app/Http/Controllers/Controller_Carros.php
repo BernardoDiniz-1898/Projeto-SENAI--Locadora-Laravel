@@ -12,7 +12,9 @@ class Controller_Carros extends Controller
      */
     public function index()
     {
-        
+        $carros = Carros::orderBy('id', 'asc')->paginate(10);
+        return view('carros.index', compact('carros'));
+
     }
 
     /**
@@ -20,7 +22,8 @@ class Controller_Carros extends Controller
      */
     public function create()
     {
-        //
+
+
     }
 
     /**
@@ -28,7 +31,29 @@ class Controller_Carros extends Controller
      */
     public function store(Request $request)
     {
-        //
+            $validate = $request->validate([
+            'Modelo' => 'required|max:100',
+            'Marca' => 'required|max:15',
+            'Placa' => 'required|max:10|unique:carros,Placa',
+            'Valor_Diaria' => 'required|numeric',
+            'Descricao' => 'nullable|string',
+            'Cor' => 'required|max:100',
+            'Ano' => 'required|integer',
+        ]);
+
+        Model_Carros::create([
+
+            'Modeo' => $validate['Modelo'],
+            'Marca' => $validate['Marca'],
+            'Placa' => $validate['Placa'],
+            'Valor_Diaria' => $validate['Valor_Diaria'],
+            'Descricao' => $validate['Descricao'],
+            'Cor' => $validate['Cor'],
+            'Ano_Veiculo' => $validate['Ano_Veiculo'], 
+
+        ]);
+
+        return redirect()->route('carros.index')->with('success', 'Carro criado com sucesso!');
     }
 
     /**

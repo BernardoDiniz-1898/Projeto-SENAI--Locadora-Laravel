@@ -10,5 +10,16 @@ class Model_Carros extends Model
     use HasFactory;
 
 
-    protected $fillabeil = ['Modelo', 'Cor', 'Ano Veiculo'];
+    protected $fillabeil = 
+    [
+        
+    'Modelo', 
+    'Marca',
+    'Placa',
+    'Valor_Diaria',
+    'Descricao',
+    'Cor', 
+    'Ano'
+
+    ];
 }
