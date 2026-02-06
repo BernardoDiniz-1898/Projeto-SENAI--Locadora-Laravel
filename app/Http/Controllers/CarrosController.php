@@ -5,13 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Carros;
 use Illuminate\Http\Request;
 
-class Controller_Carros extends Controller
+class CarrosController extends Controller
 {
 
 
     public function index()
     {
-        $carros = Carros::orderBy('id', 'asc')->paginate(10);
+        $carros = Carros::orderByDesc('id')->get();
         return view('carros.index', compact('carros'));
 
     }

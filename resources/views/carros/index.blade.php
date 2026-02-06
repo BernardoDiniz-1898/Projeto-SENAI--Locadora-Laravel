@@ -14,7 +14,7 @@
     <!-- Título -->
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2 class="fw-bold">🚗 Carros Disponíveis</h2>
-        <a href="{{ route('carros.create') }}" class="btn btn-primary">
+        <a href="{{ route('carros.index') }}" class="btn btn-primary">
             + Novo Carro
         </a>
     </div>
@@ -57,7 +57,7 @@
                             <td>R$ {{ number_format($carro->valor_diaria, 2, ',', '.') }}</td>
 
                             <td class="text-center">
-                                <a href="{{ route('carros.edit', $carro->id) }}" class="btn btn-warning btn-sm">
+                                <a href="{{ route('carros.update', $carro->id) }}" class="btn btn-warning btn-sm">
                                     Editar
                                 </a>
 
